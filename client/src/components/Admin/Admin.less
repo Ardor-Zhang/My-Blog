@@ -1,0 +1,66 @@
+
+.admin {
+    width: 60%; 
+    height: 100%;
+    margin: auto;
+    .menu {
+        display: flex;
+        justify-content: space-around;
+        .item {
+            cursor: pointer;
+            transition:  0.5s linear;
+            &:hover {
+                color: deepskyblue;
+            }
+        }
+        
+    }
+    .active {
+        color: deepskyblue;
+    }
+}
+
+.container{
+    height: 30rem;
+    overflow-y: scroll;
+    .moments, .article {
+        width: 80%;
+        margin: auto;
+        text-align: left;
+        font-size: 1.5rem;
+        p{
+            margin: 0;
+        }
+        input{
+            width: 100%;
+            color: black;
+        }
+        textarea {
+            width: 100%;
+            color: black;
+        }
+        .picture {
+            color: white;       
+        }
+        button{
+            margin: 1rem 0;
+            padding: 0 1.9rem;
+            cursor: pointer;
+        }
+        .history {
+            table {
+                width: 120%;
+                position: relative;
+                left: -10%;
+                text-align: center;
+                border-collapse: collapse;
+                td,th{
+                    border: 1px solid #ccc;
+                }
+            }
+        }
+        select {
+            color: black;
+        }
+    }
+}
