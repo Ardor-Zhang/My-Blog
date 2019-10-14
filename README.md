@@ -1,23 +1,19 @@
-设计数据库
-数据库名称 ： arrow_blog
-数据表： 
+1. 博客构架
+前端 React + dva
+后端 Express + MongoDB
+2. 功能
+用户登陆注册，留言，评论
+后台管理，博客，动态发布
+3. 剪影
+![Image text](https://github.com/Arrow-zb/My-Blog/blob/master/blog%20screen%20shot/index.png)
+![Image text](https://github.com/Arrow-zb/My-Blog/blob/master/blog%20screen%20shot/moments.png)
+![Image text](https://github.com/Arrow-zb/My-Blog/blob/master/blog%20screen%20shot/message.png)
+![Image text](https://github.com/Arrow-zb/My-Blog/blob/master/blog%20screen%20shot/life.png)
+![Image text](https://github.com/Arrow-zb/My-Blog/blob/master/blog%20screen%20shot/Intro.png)
+![Image text](https://github.com/Arrow-zb/My-Blog/blob/master/blog%20screen%20shot/afterLogin.png)
 
-表1 用户表
-用户 users
-id name password profile dateRegister
 
-表2 动态表
-moments
-id title content datePost
 
-表3 article表
-articles
-id type title content datePost times_of_view  times_of_praise remarks
 
-表4 留言表
-messages
-id who_name who_profile  content datePost
 
-表5 生活表
-life_photo
-id type url details datePost
+
