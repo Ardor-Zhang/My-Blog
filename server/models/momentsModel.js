@@ -3,7 +3,6 @@ import mongoose from 'mongoose';
 const momentsSchema = new mongoose.Schema({
     title : String,
     content : String,
-    picture : Buffer,
     datePost : String
 });
 

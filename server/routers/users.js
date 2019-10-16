@@ -2,12 +2,12 @@ import express from 'express';
 import UsersModel from '../models/usersModel';
 import svgCaptcha from 'svg-captcha';
 import { isEmpty, equals , isLength} from 'validator';
-// import multer from 'multer';   // 用于上传图片
-// import fs from 'fs';  
+import multer from 'multer';   // 用于上传图片
+import fs from 'fs';  
 import jwt from 'jsonwebtoken';  // jwt
 import config from './config'
 
-// let upload = multer({ dest: '../client/src/assets/profile/' })  // 设置上传文件的存储目录
+let upload = multer({ dest: '../client/src/assets/profile/' })  // 设置上传头像的文件的存储目录
 
 let Router = express.Router();
 let captchaText = "";
@@ -35,8 +35,7 @@ Router.post('/register',  (req, res) => {
                     res.json({type : "warning" , content : "username exists, please change another one!" });
                 }else{
                     const dateRegister = new Date().toLocaleString().replace(/[年月]/g, '-').replace(/[日上下午]/g, '');
-                    const profile = "";
-                    UsersModel.insertMany({username, password, dateRegister, profile}).then(
+                    UsersModel.insertMany({username, password, dateRegister}).then(
                         ()=>{
                             res.json({type : "success", content : "Congratulations, registration is successful!"});
                         }).catch(
@@ -74,7 +73,8 @@ Router.post('/login',  (req, res) => {
             if(info.password === password){
                 const token = jwt.sign({
                     id : info._id,
-                    username : info.username
+                    username : info.username,
+                    profile : info.profile
                 }, config.jwtSecret)
                 res.json({ type : "success", content : "Login Successfully! Welcome !" , token});
             }else{
@@ -102,9 +102,9 @@ Router.post('/captcha',(req, res) => {
     res.json(captcha.data);
 })
 
-// Router.post('/profile', upload.single('profile'), function (req, res, next) {
-//     fs.rename(req.file.path, req.file.destination + usernameNow + '.jpg', () => {});
-//     usernameNow = "";
-// })
+Router.post('/profile', upload.single('profile'), function (req, res, next) {  
+    const { username } = req.query  // 这里居然是用前端传来的， 以后再修改
+    fs.rename(req.file.path, req.file.destination + username + '.jpg', () => {});
+})
 
 export default Router;

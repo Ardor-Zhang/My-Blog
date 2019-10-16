@@ -5,12 +5,12 @@ import { isEmpty } from 'validator';
 let Router = express.Router();
 
 Router.post('/addMessage', (req, res) => {
-    const { username, content } = req.body;
+    const { username, content, profile } = req.body;
     if( isEmpty(content) ){
         res.json({type : "warning" , content : "content can not be empty!" });
     }else{
         let datePost = new Date().toLocaleString().replace(/[年月]/g, '-').replace(/[日上下午]/g, '');
-        MessagesModel.insertMany({ username, content, datePost }).then(
+        MessagesModel.insertMany({ username, content, datePost, profile }).then(
             ()=>{
                 res.json({type : "success", content : "Congratulations, AddMessage is successful!"});
             }).catch(

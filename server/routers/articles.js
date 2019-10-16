@@ -34,4 +34,16 @@ Router.post('/get_all_articles', (req, res) => {
         );
 })
 
+Router.post('/add_view_time', (req, res) => {
+    const { _id } = req.body;
+    ArticlesModel.update({_id:_id},{$inc:{times_of_view : 1}}).then( 
+        (infos) => {
+            res.json({type : "success"});
+        }).catch(
+            (err) => {
+                res.json(err);
+            }
+        );
+})
+
 export default Router;
