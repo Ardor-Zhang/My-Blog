@@ -8,24 +8,27 @@ class Moments extends Component {
         super();
         this.state = {
             title : "",
-            content : '',
-            picture : ''
+            content : ''
         }
     }
 
     handleChange = (e) => { this.setState({ [e.target.name]: e.target.value }) }
 
-    showConfirm = () => {
+    showConfirm = (e) => {
         const that = this;
         const { confirm } = Modal;
+        e.preventDefault()
         confirm({
             title: 'Do you want to add these items?',
             content: '添加至数据库中？',
             onOk() {
                 that.props.dispatch({ type : 'moments/ADD_MOMENT_ASYNC', payload : that.state })
+                
+                that.refs.formUploadPic.submit()
             },
-            onCancel() {},
+            onCancel() {}
         });
+        
     }
 
     showHistoryTr = () => {
@@ -42,7 +45,12 @@ class Moments extends Component {
                         <p>content</p>
                         <div> <textarea id="" rows="3" name="content" onChange={ this.handleChange }></textarea> </div>
                         <p>picture</p>
-                        <div> <input className={ styles.picture } type="file"/> </div>
+                        <div> 
+                            <form action={ `/api/moment/picture?title=${this.state.title}`} method="post" encType="multipart/form-data" ref="formUploadPic" target="nm_iframe">
+                                <input type="file" name="momentPicture" className={ styles.picture } />
+                            </form>
+                            <iframe id="id_iframe" name="nm_iframe" style={{"display":"none"}} title="id_iframe"></iframe>
+                        </div>
                         <Button type="primary" onClick={ this.showConfirm }>添加</Button>
                     </div>
                 

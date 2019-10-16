@@ -63,6 +63,16 @@ class SignInLogIn extends React.Component {
         this.props.dispatch({ type : 'users/LOGOUT'})
     }
 
+    submitProfile = () => {
+        return false
+    }
+
+    autoSubmit = (e) => {
+        this.submitProfile();
+        e.target.parentElement.submit();
+    }
+
+
     Sign_Login() {
         return(
             <div className={styles.indexContainer}>
@@ -168,16 +178,27 @@ class SignInLogIn extends React.Component {
     }
 
     Logout() {
+        const { username } = this.props.users.userNow
+        let profileUsername = username
+        try {
+            require(`../../assets/profile/${profileUsername}.jpg`)
+        }
+        catch(err) {
+            profileUsername = "arrow"
+        }
         return(
             <div className={ styles.Logout }>
                 <div className={ styles.profile }>
-                    <img src={ require(`../../assets/img/lufei_01.jpg`) } alt=""/>                    
+                    <img src={ require(`../../assets/profile/${profileUsername}.jpg`) } alt=""/>                    
                 </div>
                 <div className={ styles.uploadProfile }>
                     点击上传头像
+                    <form action={ `/api/user/profile?username=${username}`} method="post" encType="multipart/form-data" onSubmit={ (e)=>this.submitProfile(e) }>
+                        <input type="file" name="profile" onChange={ this.autoSubmit } />
+                    </form>
                 </div>
                 <div className={ styles.userNow }> 
-                    { this.props.users.userNow.username }
+                    { username }
                 </div>
                 <div className={ styles.operation }>
                     <div className={ styles.welcome }> WELCOME </div>

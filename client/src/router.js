@@ -4,6 +4,7 @@ import { Router,  Route, Switch, Redirect } from 'dva/router';
 import IndexPage from './routes/IndexPage/IndexPage';
 import MomentsPage from './routes/MomentsPage/MomentsPage';
 import ArticlePage from './routes/ArticlePage/ArticlePage';
+import ArticleDetailPage from './routes/ArticleDetailPage/ArticleDetailPage';
 import MessagePage from './routes/MessagePage/MessagePage';
 import IntroPage from './routes/IntroPage/IntroPage';
 import AdminPage from './routes/AdminPage/AdminPage';
@@ -19,6 +20,7 @@ const RouterConfig = ({ history }) => {
             <Route path='/home' component={ IndexPage } />
             <Route path='/moments' component={ MomentsPage } />
             <Route path='/article' component={ ArticlePage } />
+            <Route path='/detail/:id' component={ ArticleDetailPage } />
             <Route path='/message' component={ MessagePage } />
             <Route path='/intro' component={ IntroPage } />
             <Route path='/admin' component={ AdminPage } />

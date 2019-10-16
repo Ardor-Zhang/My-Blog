@@ -10,7 +10,7 @@ export default {
 
     reducers : {
         MOMENTS_ARRAY(state, { payload }) {
-            return { moments_array : payload}
+            return { moments_array : payload.reverse()}
         }
     },
 

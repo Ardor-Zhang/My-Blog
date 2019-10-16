@@ -16,34 +16,50 @@ class Moments extends Component {
     }
 
     detailsPage = () => {
+        const { title, content } = this.state.item
         return (
             <div className={ styles.details }>
-                <div>{ this.state.item.content } </div>  
+                <div className={styles.picture}>
+                    { this.profile_has_or_not(title) }
+                </div>
+                <div className={styles.content}>{ content } </div>  
             </div>
         )
+    }
+
+    profile_has_or_not = (title) => {
+        try {
+            return <img src={ require(`../../assets/momentPic/${ title }.jpg`) } alt=""/>
+        }
+        catch(err) {   
+            return <img src={ require(`../../assets/momentPic/arrow.jpg`) } alt=""/>
+        }
     }
 
     render() {
         return (
             <div className={styles.momentsContainer}>
-                <ul className={styles.container}>
-                    {
-                        this.props.moments.moments_array.map((item, index) => (
-                            <li key={item._id}  className={styles.momentsItem }  onClick={ () => this.showDetails(item) }>
-                                <div className={styles.momentsBg} style={{ backgroundImage: 'url(' + item.picture.data + ')' }}></div>
-                                <div className={styles.momentsContent}>
-                                    <div className={styles.momentsTitle}>{item.title}</div>
-                                    <div className={styles.momentsSummary}>
-                                        <div>{ item.content } </div>                                  
-                                        <div className={styles.momentsDate}>{item.datePost}</div>
+                <div className={styles.container}>
+                    <ul className={styles.allMoments}>
+                        {
+                            this.props.moments.moments_array.map((item, index) => (
+                                <li key={item._id}  className={styles.momentsItem }  onClick={ () => this.showDetails(item) }>
+                                    {/* { this.profile_has_or_not(item) } */}
+                                    <div className={ styles.momentsBg } style={{ backgroundImage: `url(./src/assets/momentPic/${item.title}.jpg)` }}></div>
+                                    {/* <div className={styles.momentsBg} style={{ backgroundImage: `${this.profile_has_or_not(item)}` }}></div> */}
+                                    <div className={styles.momentsContent}>
+                                        <div className={styles.momentsTitle}>{item.title}</div>
+                                        <div className={styles.momentsSummary}>
+                                            <div>{ item.content } </div>                                  
+                                            <div className={styles.momentsDate}>{item.datePost}</div>
+                                        </div>
                                     </div>
-                                </div>
-                                
-                            </li>
-                        )
-                        )
-                    }
-                </ul>
+                                </li>
+                                )
+                            )
+                        }
+                    </ul>
+                </div>
                 {
                     this.state.show && this.detailsPage()
                 }
