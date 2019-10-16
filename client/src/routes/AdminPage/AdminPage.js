@@ -9,7 +9,6 @@ import Admain from '../../components/Admin/Admin';
 
 
 const IndexPage = (props) => {
-    console.log(props)
     return (
         <div className={ styles.bgIndex }>
             <Navbar/>

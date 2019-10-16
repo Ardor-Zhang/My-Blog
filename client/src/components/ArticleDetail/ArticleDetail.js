@@ -46,10 +46,9 @@
 
 // export default connect()(ArticleDetail)
 
-import React, { Component } from 'react'
-import { connect } from 'dva'
-import ReactHtmlParser from 'react-html-parser'
-import styles from './ArticleDetail.less'
+import React, { Component } from 'react';
+import { connect } from 'dva';
+import styles from './ArticleDetail.less';
 
 class ArticleDetail extends Component {
     constructor() {

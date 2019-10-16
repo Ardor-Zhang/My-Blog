@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { connect } from 'dva';
 import PropTypes from 'prop-types';
 import { withRouter } from 'dva/router'
@@ -6,10 +6,6 @@ import { withRouter } from 'dva/router'
 import styles from './LuFei.less'
 
 const LuFei = ({ where }) => {
-    const RandomPic = () => {
-        
-    }
-
     return (
         <div className={ styles.lufei }>
             <a href="https://blog.csdn.net/qq_41800366">

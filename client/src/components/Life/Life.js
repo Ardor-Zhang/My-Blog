@@ -9,14 +9,7 @@ const Life = () => {
             "http://img2.imgtn.bdimg.com/it/u=4151325179,923388517&fm=26&gp=0.jpg",
             "http://img3.imgtn.bdimg.com/it/u=3213599090,1762665317&fm=26&gp=0.jpg",
             "http://img3.imgtn.bdimg.com/it/u=144097523,2847977782&fm=26&gp=0.jpg"
-        ],
-        // [
-        //     "http://img5.imgtn.bdimg.com/it/u=2407358919,2107131750&fm=26&gp=0.jpg",
-        //     "http://img0.imgtn.bdimg.com/it/u=2972735819,2059190717&fm=26&gp=0.jpg",
-        //     "http://img0.imgtn.bdimg.com/it/u=2177971862,1630084456&fm=26&gp=0.jpg",
-        //     "http://img2.imgtn.bdimg.com/it/u=2491529849,649498479&fm=26&gp=0.jpg",
-        //     "http://img0.imgtn.bdimg.com/it/u=2824651305,3893863999&fm=26&gp=0.jpg"
-        // ]
+        ]
     ]
     const handleShow = e => {
         const { target } = e.nativeEvent
