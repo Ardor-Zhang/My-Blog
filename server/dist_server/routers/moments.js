@@ -24,7 +24,7 @@ var _fs2 = _interopRequireDefault(_fs);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var upload = (0, _multer2.default)({ dest: '/img/momentPic/' }); // 设置动态图片的文件的存储目录
+var upload = (0, _multer2.default)({ dest: './public/img/momentPic/' }); // 设置动态图片的文件的存储目录
 
 // 用于上传图片
 var Router = _express2.default.Router();
