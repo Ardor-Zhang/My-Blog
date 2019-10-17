@@ -10,6 +10,8 @@ import messages from "./routers/messages";
 const app = express()  // 应用级中间件
 const mongoUrl = 'mongodb://localhost:27017/arrow_blog';
 
+app.use(express.static('public'));
+
 app.use(bodyParser.json());
 app.use('/user', users);
 app.use('/moment', moments);

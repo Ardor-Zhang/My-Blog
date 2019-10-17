@@ -36,7 +36,7 @@ var _config2 = _interopRequireDefault(_config);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var upload = (0, _multer2.default)({ dest: '../client/public/img/profile/' }); // 设置上传头像的文件的存储目录
+var upload = (0, _multer2.default)({ dest: '/img/profile/' }); // 设置上传头像的文件的存储目录
 
 // jwt
 // 用于上传图片
