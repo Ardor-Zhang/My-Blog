@@ -36,10 +36,18 @@ var _config2 = _interopRequireDefault(_config);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var upload = (0, _multer2.default)({ dest: './public/img/profile/' }); // 设置上传头像的文件的存储目录
+// let upload = multer({ dest: './public/img/profile/' })  // 设置上传头像的文件的存储目录
 
+var storage = _multer2.default.diskStorage({
+    //确定图片存储的位置
+    destination: function destination(req, file, cb) {
+        cb(null, './public/img/profile');
+    } });
+//生成的专门处理上传的一个工具，可以传入storage、limits等配置
 // jwt
 // 用于上传图片
+var upload = (0, _multer2.default)({ storage: storage });
+
 var Router = _express2.default.Router();
 var captchaText = "";
 

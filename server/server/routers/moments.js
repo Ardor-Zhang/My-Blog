@@ -4,7 +4,15 @@ import { isEmpty } from 'validator';
 
 import multer from 'multer';   // 用于上传图片
 import fs from 'fs';  
-let upload = multer({ dest: '/img/momentPic/' })  // 设置动态图片的文件的存储目录
+// let upload = multer({ dest: './public/img/momentPic/' })  // 设置动态图片的文件的存储目录
+
+var storage = multer.diskStorage({
+    //确定图片存储的位置
+    destination: function (req, file, cb){
+      cb(null, './public/img/momentPic')
+}});
+  //生成的专门处理上传的一个工具，可以传入storage、limits等配置
+var upload = multer({storage: storage});
 
 let Router = express.Router();
 
