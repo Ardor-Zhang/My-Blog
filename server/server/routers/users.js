@@ -7,7 +7,7 @@ import fs from 'fs';
 import jwt from 'jsonwebtoken';  // jwt
 import config from './config'
 
-let upload = multer({ dest: '../client/src/assets/profile/' })  // 设置上传头像的文件的存储目录
+let upload = multer({ dest: '../client/public/img/profile/' })  // 设置上传头像的文件的存储目录
 
 let Router = express.Router();
 let captchaText = "";
