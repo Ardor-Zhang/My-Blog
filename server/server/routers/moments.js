@@ -4,7 +4,7 @@ import { isEmpty } from 'validator';
 
 import multer from 'multer';   // 用于上传图片
 import fs from 'fs';  
-let upload = multer({ dest: '../../client/src/assets/momentPic/' })  // 设置动态图片的文件的存储目录
+let upload = multer({ dest: '../client/src/assets/momentPic/' })  // 设置动态图片的文件的存储目录
 
 let Router = express.Router();
 
