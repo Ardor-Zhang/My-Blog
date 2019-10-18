@@ -12,6 +12,10 @@ var _bodyParser = require("body-parser");
 
 var _bodyParser2 = _interopRequireDefault(_bodyParser);
 
+var _path = require("path");
+
+var _path2 = _interopRequireDefault(_path);
+
 var _users = require("./routers/users");
 
 var _users2 = _interopRequireDefault(_users);
@@ -32,8 +36,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var app = (0, _express2.default)(); // 应用级中间件
 var mongoUrl = 'mongodb://localhost:27017/arrow_blog';
+// console.log(__dirname)
 
-app.use(_express2.default.static('public'));
+app.use(_express2.default.static(_path2.default.join(__dirname, 'public')));
 
 app.use(_bodyParser2.default.json());
 app.use('/user', _users2.default);

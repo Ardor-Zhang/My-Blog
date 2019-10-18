@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import bodyParser from 'body-parser';
+import path from 'path';
 
 import users from "./routers/users";
 import moments from "./routers/moments";
@@ -9,8 +10,9 @@ import messages from "./routers/messages";
 
 const app = express()  // 应用级中间件
 const mongoUrl = 'mongodb://localhost:27017/arrow_blog';
+// console.log(__dirname)
 
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(bodyParser.json());
 app.use('/user', users);

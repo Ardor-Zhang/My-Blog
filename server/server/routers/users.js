@@ -7,15 +7,7 @@ import fs from 'fs';
 import jwt from 'jsonwebtoken';  // jwt
 import config from './config'
 
-// let upload = multer({ dest: './public/img/profile/' })  // 设置上传头像的文件的存储目录
-
-var storage = multer.diskStorage({
-    //确定图片存储的位置
-    destination: function (req, file, cb){
-      cb(null, './public/img/profile')
-}});
-  //生成的专门处理上传的一个工具，可以传入storage、limits等配置
-var upload = multer({storage: storage});
+let upload = multer({ dest: './server/public/img/profile/' })  // 设置上传头像的文件的存储目录
 
 let Router = express.Router();
 let captchaText = "";
@@ -112,7 +104,7 @@ Router.post('/captcha',(req, res) => {
 
 Router.post('/profile', upload.single('profile'), function (req, res, next) {  
     const { username } = req.query  // 这里居然是用前端传来的， 以后再修改
-    fs.rename(req.file.path, req.file.destination + username + '.jpg', () => {});
+    fs.rename(req.file.path, req.file.destination + username + '.jpg', () => res.redirect("http://localhost:8000"));
 })
 
 export default Router;
