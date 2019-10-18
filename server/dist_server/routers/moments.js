@@ -24,7 +24,7 @@ var _fs2 = _interopRequireDefault(_fs);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var upload = (0, _multer2.default)({ dest: './server/public/img/momentPic/' }); // 设置动态图片的文件的存储目录
+var upload = (0, _multer2.default)({ dest: './public/img/momentPic/' }); // 设置动态图片的文件的存储目录
 
 // var storage = multer.diskStorage({
 //     //确定图片存储的位置
