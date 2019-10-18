@@ -138,7 +138,7 @@ Router.post('/profile', upload.single('profile'), function (req, res, next) {
     var username = req.query.username; // 这里居然是用前端传来的， 以后再修改
 
     _fs2.default.rename(req.file.path, req.file.destination + username + '.jpg', function () {
-        return res.redirect("http://localhost:8000");
+        return res.redirect("http://134.175.53.155/home");
     });
 });
 
